@@ -1,4 +1,4 @@
-import { posix } from 'path'
+import { relative, posix } from 'path'
 
 import pkgDir from 'pkg-dir'
 
@@ -10,5 +10,5 @@ export const normalizeBinPath = async function(binPath) {
   }
 
   const rootDir = await ROOT_DIR
-  return posix.relative(rootDir, binPath)
+  return posix.normalize(relative(rootDir, binPath))
 }
