@@ -75,14 +75,17 @@ const { getBinPathSync } = require('get-bin-path')
 const binPath = getBinPathSync(undefined, { cwd: '/currentDirectory' })
 ```
 
+When no `package.json` or binary can be found, `undefined` is returned instead.
+
 ## getBinPathSync(name?, options?)
 
-`name`: `string`<br> [`options`](#options): `object`<br>_Returns_: `string`
+`name`: `string`<br> [`options`](#options): `object`<br>_Returns_:
+`string | undefined`
 
 ## getBinPath(name?, options?)
 
 `name`: `string`<br> [`options`](#options): `object`<br>_Returns_:
-`Promise<string>`
+`Promise<string | undefined>`
 
 ### options
 
