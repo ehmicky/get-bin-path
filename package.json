@@ -4,7 +4,6 @@
   "main": "build/src/main.js",
   "files": [
     "build/src",
-    "examples",
     "!~"
   ],
   "scripts": {

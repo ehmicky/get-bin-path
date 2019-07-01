@@ -11,13 +11,6 @@ Get the current package's binary path.
 
 Work in progress!
 
-# Demo
-
-You can try this library:
-
-- either directly [in your browser](https://repl.it/@ehmicky/get-bin-path).
-- or by executing the [`examples` files](examples/README.md) in a terminal.
-
 # Install
 
 ```
