@@ -67,7 +67,7 @@ If there are several binaries, you can choose between them:
 ```js
 const { getBinPathSync } = require('get-bin-path')
 
-const binPath = getBinPathSync('bin-name')
+const binPath = getBinPathSync('binary-name')
 ```
 
 The current directory can be overridden:
@@ -75,19 +75,19 @@ The current directory can be overridden:
 ```js
 const { getBinPathSync } = require('get-bin-path')
 
-const binPath = getBinPathSync('bin-name', { cwd: '/currentDirectory' })
+const binPath = getBinPathSync('binary-name', { cwd: '/currentDirectory' })
 ```
 
 When no `package.json` or binary can be found, `undefined` is returned instead.
 
-## getBinPathSync(name?, options?)
+## getBinPathSync(binaryName?, options?)
 
-`name`: `string`<br> [`options`](#options): `object`<br>_Returns_:
+`binaryName`: `string`<br> [`options`](#options): `object`<br>_Returns_:
 `string | undefined`
 
-## getBinPath(name?, options?)
+## getBinPath(binaryName?, options?)
 
-`name`: `string`<br> [`options`](#options): `object`<br>_Returns_:
+`binaryName`: `string`<br> [`options`](#options): `object`<br>_Returns_:
 `Promise<string | undefined>`
 
 ### options
