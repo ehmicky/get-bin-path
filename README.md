@@ -54,7 +54,7 @@ const { getBinPathSync } = require('get-bin-path')
 const binPath = getBinPathSync()
 ```
 
-This can be run either synchronously or asynchronously:
+This can be either synchronous or asynchronous:
 
 ```js
 const { getBinPath } = require('get-bin-path')
