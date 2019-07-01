@@ -105,7 +105,7 @@ Override the current directory, which is used when retrieving the
 
 # See also
 
-- [`execa`](https://github.com/sindresorhus/execa)
+- [`execa`](https://github.com/sindresorhus/execa): process execution for humans
 
 # Support
 
