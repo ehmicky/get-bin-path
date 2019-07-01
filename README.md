@@ -9,7 +9,32 @@
 
 Get the current package's binary path.
 
-Work in progress!
+This is useful when testing a package's binary. Using `get-bin-path` (as opposed
+to hard-coding the path to the binary):
+
+- validates that the `package.json` `bin` field is correctly setup.
+- decouples the binary path from the tests, which allows moving the file without
+  rewriting the tests.
+
+# Examples
+
+```js
+const { getBinPath, getBinPathSync } = require('get-bin-path')
+
+// `binPath` is the absolute path to the current package's binary
+const binPath = getBinPathSync()
+```
+
+```js
+const test = require('ava')
+const execa = require('execa')
+
+test('Binary file should return "true"', async t => {
+  const binPath = await getBinPath()
+  const { stdout } = await execa(binPath)
+  t.is(stdout, 'true')
+})
+```
 
 # Install
 
@@ -18,6 +43,54 @@ npm install get-bin-path
 ```
 
 # Usage
+
+This returns the current package's binary absolute path:
+
+```js
+const { getBinPathSync } = require('get-bin-path')
+const binPath = getBinPathSync()
+```
+
+This can be run either synchronously or asynchronously:
+
+```js
+const { getBinPath } = require('get-bin-path')
+
+const asyncFunc = async () => {
+  const binPath = await getBinPath()
+}
+```
+
+If there are several binaries, you can choose between them:
+
+```js
+const { getBinPathSync } = require('get-bin-path')
+const binPath = getBinPathSync('bin-name')
+```
+
+The current directory can be overridden:
+
+```js
+const { getBinPathSync } = require('get-bin-path')
+const binPath = getBinPathSync(undefined, { cwd: '/currentDirectory' })
+```
+
+## getBinPathSync(name?, options?)
+
+`name`: `string`<br> [`options`](#options): `object`<br>_Returns_: `string`
+
+## getBinPath(name?, options?)
+
+`name`: `string`<br> [`options`](#options): `object`<br>_Returns_:
+`Promise<string>`
+
+### options
+
+#### options.cwd
+
+_Type_: `string`<br> _Default_: Current directory
+
+Override the current directory. This is used to retrieve the `package.json`.
 
 # See also
 
