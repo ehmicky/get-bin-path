@@ -75,7 +75,7 @@ The current directory can be overridden:
 ```js
 const { getBinPathSync } = require('get-bin-path')
 
-const binPath = getBinPathSync(undefined, { cwd: '/currentDirectory' })
+const binPath = getBinPathSync('bin-name', { cwd: '/currentDirectory' })
 ```
 
 When no `package.json` or binary can be found, `undefined` is returned instead.
@@ -91,6 +91,8 @@ When no `package.json` or binary can be found, `undefined` is returned instead.
 `Promise<string | undefined>`
 
 ### options
+
+_Type_: `object`
 
 #### options.cwd
 
