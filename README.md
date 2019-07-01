@@ -98,7 +98,8 @@ _Type_: `object`
 
 _Type_: `string`<br> _Default_: Current directory
 
-Override the current directory. This is used to retrieve the `package.json`.
+Override the current directory, which is used when retrieving the
+`package.json`.
 
 # See also
 
