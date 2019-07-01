@@ -48,6 +48,7 @@ This returns the current package's binary absolute path:
 
 ```js
 const { getBinPathSync } = require('get-bin-path')
+
 const binPath = getBinPathSync()
 ```
 
@@ -65,6 +66,7 @@ If there are several binaries, you can choose between them:
 
 ```js
 const { getBinPathSync } = require('get-bin-path')
+
 const binPath = getBinPathSync('bin-name')
 ```
 
@@ -72,6 +74,7 @@ The current directory can be overridden:
 
 ```js
 const { getBinPathSync } = require('get-bin-path')
+
 const binPath = getBinPathSync(undefined, { cwd: '/currentDirectory' })
 ```
 
