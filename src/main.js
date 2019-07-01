@@ -11,7 +11,7 @@ import { isPlainObject } from './utils.js'
  * @param {string} name - Binary name
  * @param {object} [options]
  * @param {string} [options.cwd="Current directory"] - Current directory
- * @returns {string | undefined} binaryPath - Binary absolute path.
+ * @returns {Promise<string | undefined>} binaryPath - Binary absolute path.
  * `undefined` if it could not be found.
  *
  * @example const binaryPath = await getBinPath()
