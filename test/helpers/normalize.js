@@ -1,4 +1,4 @@
-import { relative, posix } from 'path'
+import { relative } from 'path'
 
 import pkgDir from 'pkg-dir'
 
@@ -10,5 +10,5 @@ export const normalizeBinPath = async function(binPath) {
   }
 
   const rootDir = await ROOT_DIR
-  return posix.normalize(relative(rootDir, binPath))
+  return relative(rootDir, binPath).replace(/\\/gu, '/')
 }
