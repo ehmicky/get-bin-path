@@ -31,6 +31,7 @@ const execa = require('execa')
 
 test('Binary file should return "true"', async t => {
   const binPath = await getBinPath()
+  // `execa` is a library to execute child processes / commands
   const { stdout } = await execa(binPath)
   t.is(stdout, 'true')
 })
