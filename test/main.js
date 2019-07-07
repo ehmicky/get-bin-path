@@ -10,7 +10,7 @@ import { normalizeBinPath } from './helpers/normalize.js'
 const PACKAGES_DIR = `${__dirname}/helpers/packages`
 
 testEach(
-  [{ getBinFunc: getBinPath }, { getBinFunc: getBinPathSync }],
+  [getBinPath, getBinPathSync],
   [
     // No `package.json`
     [undefined, '/'],
@@ -31,7 +31,7 @@ testEach(
     ['test', 'string'],
     ['test', 'object'],
   ],
-  ({ title }, { getBinFunc }, [name, cwd]) => {
+  ({ title }, getBinFunc, [name, cwd]) => {
     test(`main tests | ${title}`, async t => {
       const cwdA = cwd === '/' ? cwd : `${PACKAGES_DIR}/${cwd}`
       const binPath = await getBinFunc(name, { cwd: cwdA })
@@ -42,20 +42,17 @@ testEach(
   },
 )
 
-testEach(
-  [{ getBinFunc: getBinPath }, { getBinFunc: getBinPathSync }],
-  ({ title }, { getBinFunc }) => {
-    // This needs to run serially because we change the global `cwd`
-    test.serial(`no options | ${title}`, async t => {
-      const currentDir = getCwd()
-      chdir(`${PACKAGES_DIR}/string`)
+testEach([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
+  // This needs to run serially because we change the global `cwd`
+  test.serial(`no options | ${title}`, async t => {
+    const currentDir = getCwd()
+    chdir(`${PACKAGES_DIR}/string`)
 
-      const binPath = await getBinFunc()
-      const normalizedPath = await normalizeBinPath(binPath)
+    const binPath = await getBinFunc()
+    const normalizedPath = await normalizeBinPath(binPath)
 
-      chdir(currentDir)
+    chdir(currentDir)
 
-      t.snapshot(normalizedPath)
-    })
-  },
-)
+    t.snapshot(normalizedPath)
+  })
+})
