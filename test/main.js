@@ -1,7 +1,7 @@
 import { cwd as getCwd, chdir } from 'process'
 
 import test from 'ava'
-import testEach from 'test-each'
+import { each } from 'test-each'
 
 import { getBinPath, getBinPathSync } from '../src/main.js'
 
@@ -9,7 +9,7 @@ import { normalizeBinPath } from './helpers/normalize.js'
 
 const PACKAGES_DIR = `${__dirname}/helpers/packages`
 
-testEach(
+each(
   [getBinPath, getBinPathSync],
   [
     // No `package.json`
@@ -42,7 +42,7 @@ testEach(
   },
 )
 
-testEach([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
+each([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
   // This needs to run serially because we change the global `cwd`
   test.serial(`no options | ${title}`, async t => {
     const currentDir = getCwd()
