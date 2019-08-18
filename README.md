@@ -20,13 +20,14 @@ to hard-coding the path to the binary):
 # Examples
 
 ```js
-const { getBinPath, getBinPathSync } = require('get-bin-path')
+const { getBinPathSync } = require('get-bin-path')
 
 // `binPath` is the absolute path to the current package's binary
 const binPath = getBinPathSync()
 ```
 
 ```js
+const { getBinPath } = require('get-bin-path')
 // Test runner
 const test = require('ava')
 // Library to execute child processes / commands
