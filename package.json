@@ -53,9 +53,9 @@
     "read-pkg-up": "^6.0.0"
   },
   "devDependencies": {
+    "@ehmicky/dev-tasks": "^0.30.40",
     "ava": "^2.3.0",
     "gulp": "^4.0.2",
-    "gulp-shared-tasks": "^0.30.40",
     "husky": "^3.0.5",
     "pkg-dir": "^4.2.0",
     "test-each": "^1.7.2"
