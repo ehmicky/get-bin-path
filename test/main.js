@@ -20,16 +20,18 @@ each(
     [undefined, 'none'],
 
     // Invalid `name`
-    ['invalid', 'string'],
     ['invalid', 'object'],
 
     // Using default `name`
     [undefined, 'string'],
+    ['anything', 'string'],
     [undefined, 'object'],
 
     // Valid input when `bin` is string or object
     ['test', 'string'],
     ['test', 'object'],
+    [undefined, 'simple'],
+    ['test', 'simple'],
   ],
   ({ title }, getBinFunc, [name, cwd]) => {
     test(`main tests | ${title}`, async t => {

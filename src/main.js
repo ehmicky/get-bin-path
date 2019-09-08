@@ -50,8 +50,7 @@ const getBinaryPath = function(packageResult, name) {
     path: packagePath,
   } = packageResult
 
-  const binaries = getBinaries(packageBin, packageName)
-  const relativePath = getRelativePath(binaries, packageName, name)
+  const relativePath = getRelativePath(packageBin, packageName, name)
 
   // Binary not found in `package.json`
   if (relativePath === undefined) {
@@ -63,22 +62,27 @@ const getBinaryPath = function(packageResult, name) {
 }
 
 // `bin` field can either be a `string` or an `object`
-const getBinaries = function(packageBin, packageName) {
-  if (packageBin === undefined) {
-    return {}
+const getRelativePath = function(packageBin, packageName, name = packageName) {
+  if (isInvalidBin(packageBin)) {
+    return
   }
 
   if (typeof packageBin === 'string') {
-    return { [packageName]: packageBin }
+    return packageBin
   }
 
-  if (!isPlainObject(packageBin)) {
-    return {}
+  const keys = Object.keys(packageBin)
+
+  if (keys.length === 1) {
+    return packageBin[keys[0]]
   }
 
-  return packageBin
+  return packageBin[name]
 }
 
-const getRelativePath = function(binaries, packageName, name = packageName) {
-  return binaries[name]
+const isInvalidBin = function(packageBin) {
+  return (
+    packageBin === undefined ||
+    (typeof packageBin !== 'string' && !isPlainObject(packageBin))
+  )
 }
