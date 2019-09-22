@@ -45,7 +45,7 @@ const getBinaryPath = function(packageResult, name) {
   }
 
   const {
-    package: { bin: packageBin, name: packageName },
+    packageJson: { bin: packageBin, name: packageName },
     path: packagePath,
   } = packageResult
 
