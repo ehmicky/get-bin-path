@@ -1,8 +1,7 @@
 import { resolve } from 'path'
 
 import readPkgUp from 'read-pkg-up'
-
-import { isPlainObject } from './utils.js'
+import isPlainObj from 'is-plain-obj'
 
 /**
  * Get the current package's binary path.
@@ -83,6 +82,6 @@ const getRelativePath = function(packageBin, packageName, name = packageName) {
 const isInvalidBin = function(packageBin) {
   return (
     packageBin === undefined ||
-    (typeof packageBin !== 'string' && !isPlainObject(packageBin))
+    (typeof packageBin !== 'string' && !isPlainObj(packageBin))
   )
 }
