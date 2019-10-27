@@ -74,7 +74,7 @@ const { getBinPathSync } = require('get-bin-path')
 const binPath = getBinPathSync('binary-name')
 ```
 
-The current directory can be overridden:
+The current directory can be overridden (for example with monorepos):
 
 ```js
 const { getBinPathSync } = require('get-bin-path')
@@ -104,6 +104,8 @@ _Type_: `string`<br> _Default_: Current directory
 
 Override the current directory, which is used when retrieving the
 `package.json`.
+
+This is useful when using monorepos.
 
 # See also
 
