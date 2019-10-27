@@ -36,7 +36,7 @@ each(
   ({ title }, getBinFunc, [name, cwd]) => {
     test(`main tests | ${title}`, async t => {
       const cwdA = cwd === '/' ? cwd : `${PACKAGES_DIR}/${cwd}`
-      const binPath = await getBinFunc(name, { cwd: cwdA })
+      const binPath = await getBinFunc({ name, cwd: cwdA })
       const normalizedPath = await normalizeBinPath(binPath)
 
       t.snapshot(normalizedPath)

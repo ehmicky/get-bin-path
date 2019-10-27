@@ -71,7 +71,7 @@ If there are several binaries, you can choose between them:
 ```js
 const { getBinPathSync } = require('get-bin-path')
 
-const binPath = getBinPathSync('binary-name')
+const binPath = getBinPathSync({ name: 'binary-name' })
 ```
 
 The current directory can be overridden (for example with monorepos):
@@ -79,24 +79,29 @@ The current directory can be overridden (for example with monorepos):
 ```js
 const { getBinPathSync } = require('get-bin-path')
 
-const binPath = getBinPathSync('binary-name', { cwd: '/currentDirectory' })
+const binPath = getBinPathSync({ cwd: '/currentDirectory' })
 ```
 
 When no `package.json` or binary can be found, `undefined` is returned instead.
 
-## getBinPathSync(binaryName?, options?)
+## getBinPathSync(options?)
 
-`binaryName`: `string`<br> [`options`](#options): `object`<br>_Returns_:
-`string | undefined`
+[`options`](#options): `object`<br>_Returns_: `string | undefined`
 
-## getBinPath(binaryName?, options?)
+## getBinPath(options?)
 
-`binaryName`: `string`<br> [`options`](#options): `object`<br>_Returns_:
-`Promise<string | undefined>`
+[`options`](#options): `object`<br>_Returns_: `Promise<string | undefined>`
 
 ### options
 
 _Type_: `object`
+
+#### options.name
+
+_Type_: `string`<br> _Default_: `package.json` `name` property
+
+Name of the binary. Only needs to be specified when the package exports several
+binaries.
 
 #### options.cwd
 

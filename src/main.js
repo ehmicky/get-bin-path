@@ -15,7 +15,7 @@ import isPlainObj from 'is-plain-obj'
  *
  * @example const binaryPath = await getBinPath()
  */
-export const getBinPath = async function(name, { cwd } = {}) {
+export const getBinPath = async function({ name, cwd } = {}) {
   // We don't use `normalize` because we don't really need it, so it's faster
   // and it removes a dependency
   const packageResult = await readPkgUp({ cwd, normalize: false })
@@ -33,7 +33,7 @@ export const getBinPath = async function(name, { cwd } = {}) {
  *
  * @example const binaryPath = getBinPathSync()
  */
-export const getBinPathSync = function(name, { cwd } = {}) {
+export const getBinPathSync = function({ name, cwd } = {}) {
   const packageResult = readPkgUp.sync({ cwd, normalize: false })
   return getBinaryPath(packageResult, name)
 }

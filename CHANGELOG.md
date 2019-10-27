@@ -1,3 +1,12 @@
+# 4.0.0
+
+## Breaking changes
+
+- The `name` argument must now be specified as an
+  [option](https://github.com/ehmicky/get-bin-path/blob/master/README.md#optionsname)
+  instead. For example `getBinPath(name, { cwd })` is now
+  `getBinPath({ name, cwd })`.
+
 # 3.0.0
 
 ## Features
