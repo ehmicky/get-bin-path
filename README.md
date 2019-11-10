@@ -86,11 +86,13 @@ When no `package.json` or binary can be found, `undefined` is returned instead.
 
 ## getBinPathSync(options?)
 
-[`options`](#options): `object`<br>_Returns_: `string | undefined`
+[`options`](#options): `object`\
+_Returns_: `string | undefined`
 
 ## getBinPath(options?)
 
-[`options`](#options): `object`<br>_Returns_: `Promise<string | undefined>`
+[`options`](#options): `object`\
+_Returns_: `Promise<string | undefined>`
 
 ### options
 
@@ -98,14 +100,16 @@ _Type_: `object`
 
 #### options.name
 
-_Type_: `string`<br> _Default_: `package.json` `name` property
+_Type_: `string`\
+_Default_: `package.json` `name` property
 
 Name of the binary. Only needs to be specified when the package exports several
 binaries.
 
 #### options.cwd
 
-_Type_: `string`<br> _Default_: Current directory
+_Type_: `string`\
+_Default_: Current directory
 
 Override the current directory, which is used when retrieving the
 `package.json`.
