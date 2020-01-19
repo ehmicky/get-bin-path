@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^2.1.0",
     "read-pkg-up": "^7.0.1"
   },
   "devDependencies": {
