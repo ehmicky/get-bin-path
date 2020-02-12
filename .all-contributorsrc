@@ -20,7 +20,17 @@
         "ideas",
         "doc"
       ]
+    },
+    {
+      "login": "evocateur",
+      "name": "Daniel Stockman",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5605?v=4",
+      "profile": "http://evocateur.org/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
