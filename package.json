@@ -53,7 +53,7 @@
     "read-pkg-up": "^7.0.1"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^0.31.24",
+    "@ehmicky/dev-tasks": "^0.31.25",
     "ava": "^3.5.1",
     "gulp": "^4.0.2",
     "husky": "^4.2.3",
