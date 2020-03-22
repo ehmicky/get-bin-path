@@ -33,7 +33,7 @@ const test = require('ava')
 // Library to execute child processes / commands
 const execa = require('execa')
 
-test('Binary file should return "true"', async t => {
+test('Binary file should return "true"', async (t) => {
   const binPath = await getBinPath()
   const { stdout } = await execa(binPath)
   t.is(stdout, 'true')

@@ -4,7 +4,7 @@ import pkgDir from 'pkg-dir'
 
 const ROOT_DIR = pkgDir()
 
-export const normalizeBinPath = async function(binPath) {
+export const normalizeBinPath = async function (binPath) {
   if (typeof binPath !== 'string') {
     return binPath
   }

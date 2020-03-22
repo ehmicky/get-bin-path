@@ -34,7 +34,7 @@ each(
     ['test', 'simple'],
   ],
   ({ title }, getBinFunc, [name, cwd]) => {
-    test(`main tests | ${title}`, async t => {
+    test(`main tests | ${title}`, async (t) => {
       const cwdA = cwd === '/' ? cwd : `${PACKAGES_DIR}/${cwd}`
       const binPath = await getBinFunc({ name, cwd: cwdA })
       const normalizedPath = await normalizeBinPath(binPath)
@@ -46,7 +46,7 @@ each(
 
 each([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
   // This needs to run serially because we change the global `cwd`
-  test.serial(`no options | ${title}`, async t => {
+  test.serial(`no options | ${title}`, async (t) => {
     const currentDir = getCwd()
     chdir(`${PACKAGES_DIR}/string`)
 
