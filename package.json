@@ -2,9 +2,11 @@
   "name": "get-bin-path",
   "version": "5.0.1",
   "main": "build/src/main.js",
+  "types": "./main.d.ts",
   "files": [
     "build/src",
-    "!*~"
+    "!*~",
+    "main.d.ts"
   ],
   "scripts": {
     "test": "gulp test"
