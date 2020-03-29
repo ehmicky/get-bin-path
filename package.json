@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.31.25",
-    "ava": "^3.5.1",
+    "ava": "^3.5.2",
     "gulp": "^4.0.2",
     "husky": "^4.2.3",
     "pkg-dir": "^4.2.0",
