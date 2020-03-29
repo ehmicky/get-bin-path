@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
-import readPkgUp from 'read-pkg-up'
 import isPlainObj from 'is-plain-obj'
+import readPkgUp from 'read-pkg-up'
 
 /**
  * Get the current package's binary path.

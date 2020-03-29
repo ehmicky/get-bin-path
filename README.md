@@ -27,11 +27,11 @@ const binPath = getBinPathSync()
 ```
 
 ```js
-const { getBinPath } = require('get-bin-path')
 // Test runner
 const test = require('ava')
 // Library to execute child processes / commands
 const execa = require('execa')
+const { getBinPath } = require('get-bin-path')
 
 test('Binary file should return "true"', async (t) => {
   const binPath = await getBinPath()
