@@ -9,7 +9,7 @@
     "types/index.d.ts"
   ],
   "scripts": {
-    "test": "gulp test",
+    "test": "gulp test && npm run lint:types",
     "lint:types": "dtslint --localTs node_modules/typescript/lib types"
   },
   "husky": {
