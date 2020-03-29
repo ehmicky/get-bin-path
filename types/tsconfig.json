@@ -8,6 +8,9 @@
     "strictFunctionTypes": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": { "get-bin-path": ["."] }
+    "paths": {
+      "get-bin-path": ["."]
+    },
+    "esModuleInterop": false
   }
 }

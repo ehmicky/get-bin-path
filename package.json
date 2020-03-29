@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "gulp test",
-    "lint:types": "dtslint types"
+    "lint:types": "dtslint --localTs node_modules/typescript/lib types"
   },
   "husky": {
     "hooks": {
@@ -62,7 +62,8 @@
     "gulp": "^4.0.2",
     "husky": "^4.2.5",
     "pkg-dir": "^4.2.0",
-    "test-each": "^2.0.1"
+    "test-each": "^2.0.1",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=10.17.0"

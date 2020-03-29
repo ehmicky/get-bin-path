@@ -16,7 +16,7 @@ export interface BinaryOptions {
  * @example
  *  const binaryPath = await getBinPath()
  */
-export declare function getBinPath(options?: BinaryOptions): Promise<string | undefined>;
+export function getBinPath(options?: BinaryOptions): Promise<string | undefined>;
 
 /**
  * Get the current package's binary path synchronously.
@@ -28,4 +28,4 @@ export declare function getBinPath(options?: BinaryOptions): Promise<string | un
  * @example
  *  const binaryPath = getBinPathSync()
  */
-export declare function getBinPathSync(options?: BinaryOptions): string | undefined;
+export function getBinPathSync(options?: BinaryOptions): string | undefined;
