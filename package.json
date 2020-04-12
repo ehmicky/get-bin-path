@@ -49,7 +49,6 @@
     "test": "test"
   },
   "dependencies": {
-    "core-js": "^3.3.4",
     "is-plain-obj": "^2.0.0",
     "read-pkg-up": "^7.0.0"
   },
