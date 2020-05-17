@@ -1,3 +1,9 @@
+# 5.1.0
+
+## Features
+
+- Add TypeScript types
+
 # 5.0.1
 
 ## Dependencies
