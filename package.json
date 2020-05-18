@@ -2,12 +2,15 @@
   "name": "get-bin-path",
   "version": "5.0.1",
   "main": "build/src/main.js",
+  "types": "types/index.d.ts",
   "files": [
     "build/src",
-    "!*~"
+    "!*~",
+    "types/index.d.ts"
   ],
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test && npm run lint:types",
+    "lint:types": "dtslint --localTs node_modules/typescript/lib types"
   },
   "husky": {
     "hooks": {
@@ -55,10 +58,12 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.31.44",
     "ava": "^3.8.2",
+    "dtslint": "^3.5.2",
     "gulp": "^4.0.2",
     "husky": "^4.2.5",
     "pkg-dir": "^4.2.0",
-    "test-each": "^2.0.1"
+    "test-each": "^2.0.1",
+    "typescript": "^3.9.2"
   },
   "engines": {
     "node": ">=10.17.0"
