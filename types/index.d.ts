@@ -5,14 +5,16 @@ export interface BinaryOptions {
   /**
    * Name of the binary. Only needs to be specified when the package exports several binaries.
    *
-   * Default: `package.json` `name` property
+   * @default `package.json` `name` property
+   * @type {string}
    */
   name?: string;
 
   /**
    * Override the current directory, which is used when retrieving the `package.json`.
    *
-   * Default: Current directory
+   * @default Current directory
+   * @type {string}
    */
   cwd?: string;
 }
