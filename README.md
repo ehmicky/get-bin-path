@@ -35,7 +35,7 @@ const { getBinPath } = require('get-bin-path')
 
 test('Binary file should return "true"', async (t) => {
   const binPath = await getBinPath()
-  const { stdout } = await execa(binPath)
+  const { stdout } = await execa.node(binPath)
   t.is(stdout, 'true')
 })
 ```
