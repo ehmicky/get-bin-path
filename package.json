@@ -56,7 +56,7 @@
     "read-pkg-up": "^7.0.1"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^0.31.49",
+    "@ehmicky/dev-tasks": "^0.31.50",
     "ava": "^3.9.0",
     "dtslint": "^3.5.2",
     "gulp": "^4.0.2",
