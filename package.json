@@ -63,7 +63,7 @@
     "husky": "^4.2.5",
     "pkg-dir": "^4.2.0",
     "test-each": "^2.0.1",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   },
   "engines": {
     "node": ">=10.17.0"
