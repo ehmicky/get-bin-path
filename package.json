@@ -58,7 +58,7 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.31.59",
     "ava": "^3.11.1",
-    "dtslint": "^3.6.12",
+    "dtslint": "^3.6.14",
     "gulp": "^4.0.2",
     "husky": "^4.2.5",
     "pkg-dir": "^4.2.0",
