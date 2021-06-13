@@ -1,4 +1,5 @@
 import { cwd as getCwd, chdir } from 'process'
+import { fileURLToPath } from 'url'
 
 import test from 'ava'
 // eslint-disable-next-line import/no-unresolved, node/no-missing-import
@@ -7,7 +8,9 @@ import { each } from 'test-each'
 
 import { normalizeBinPath } from './helpers/normalize.js'
 
-const PACKAGES_DIR = `${__dirname}/helpers/packages`
+const PACKAGES_DIR = fileURLToPath(
+  new URL('./helpers/packages', import.meta.url),
+)
 
 each(
   [getBinPath, getBinPathSync],
