@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
 import isPlainObj from 'is-plain-obj'
-import readPkgUp from 'read-pkg-up'
+import { readPackageUpAsync, readPackageUpSync } from 'read-pkg-up'
 
 /**
  * Get the current package's binary path.
@@ -18,7 +18,7 @@ import readPkgUp from 'read-pkg-up'
 export const getBinPath = async function ({ name, cwd } = {}) {
   // We don't use `normalize` because we don't really need it, so it's faster
   // and it removes a dependency
-  const packageResult = await readPkgUp({ cwd, normalize: false })
+  const packageResult = await readPackageUpAsync({ cwd, normalize: false })
   return getBinaryPath(packageResult, name)
 }
 
@@ -34,7 +34,7 @@ export const getBinPath = async function ({ name, cwd } = {}) {
  * @example const binaryPath = getBinPathSync()
  */
 export const getBinPathSync = function ({ name, cwd } = {}) {
-  const packageResult = readPkgUp.sync({ cwd, normalize: false })
+  const packageResult = readPackageUpSync({ cwd, normalize: false })
   return getBinaryPath(packageResult, name)
 }
 
