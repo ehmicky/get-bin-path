@@ -1,9 +1,9 @@
 import { getBinPath, getBinPathSync } from 'get-bin-path'
 
-// Synchronous
 const binPath: string | undefined = getBinPathSync()
 
-// Asynchronous
-;(async () => {
+const runAsync = async function () {
   const binPath: string | undefined = await getBinPath()
-})()
+}
+
+runAsync()

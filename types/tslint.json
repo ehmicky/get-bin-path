@@ -1,6 +1,9 @@
 {
   "extends": "dtslint/dtslint.json",
   "rules": {
-    "no-redundant-jsdoc": false
+    "no-redundant-jsdoc": false,
+    "semicolon": false,
+    "space-before-function-paren": false,
+    "only-arrow-functions": false
   }
 }

@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["es6"],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": false,
+    "lib": ["esnext"],
+    "strict": true,
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "get-bin-path": ["."]
-    },
-    "esModuleInterop": false
+    }
   }
 }
