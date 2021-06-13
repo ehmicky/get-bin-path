@@ -18,19 +18,23 @@ to hard-coding the path to the binary):
 
 # Examples
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { getBinPathSync } = require('get-bin-path')
+import { getBinPathSync } from 'get-bin-path'
 
 // `binPath` is the absolute path to the current package's binary
 const binPath = getBinPathSync()
 ```
 
+<!-- eslint-disable node/no-missing-import, node/no-extraneous-import -->
+
 ```js
 // Test runner
-const test = require('ava')
+import test from 'ava'
 // Library to execute child processes / commands
-const execa = require('execa')
-const { getBinPath } = require('get-bin-path')
+import execa from 'execa'
+import { getBinPath } from 'get-bin-path'
 
 test('Binary file should return "true"', async (t) => {
   const binPath = await getBinPath()
@@ -49,16 +53,20 @@ npm install get-bin-path
 
 This returns the current package's binary absolute path:
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { getBinPathSync } = require('get-bin-path')
+import { getBinPathSync } from 'get-bin-path'
 
 const binPath = getBinPathSync()
 ```
 
 This can be either synchronous or asynchronous:
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { getBinPath } = require('get-bin-path')
+import { getBinPath } from 'get-bin-path'
 
 const asyncFunc = async () => {
   const binPath = await getBinPath()
@@ -67,16 +75,20 @@ const asyncFunc = async () => {
 
 If there are several binaries, you can choose between them:
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { getBinPathSync } = require('get-bin-path')
+import { getBinPathSync } from 'get-bin-path'
 
 const binPath = getBinPathSync({ name: 'binary-name' })
 ```
 
 The current directory can be overridden (for example with monorepos):
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { getBinPathSync } = require('get-bin-path')
+import { getBinPathSync } from 'get-bin-path'
 
 const binPath = getBinPathSync({ cwd: '/currentDirectory' })
 ```
