@@ -8,7 +8,7 @@ export interface BinaryOptions {
    * @default `package.json` `name` property
    * @type {string}
    */
-  name?: string;
+  name?: string
 
   /**
    * Override the current directory, which is used when retrieving the `package.json`.
@@ -16,7 +16,7 @@ export interface BinaryOptions {
    * @default Current directory
    * @type {string}
    */
-  cwd?: string;
+  cwd?: string
 }
 
 /**
@@ -29,7 +29,7 @@ export interface BinaryOptions {
  * @example
  *  const binaryPath = await getBinPath()
  */
-export function getBinPath(options?: BinaryOptions): Promise<string | undefined>;
+export function getBinPath(options?: BinaryOptions): Promise<string | undefined>
 
 /**
  * Get the current package's binary path synchronously.
@@ -41,4 +41,4 @@ export function getBinPath(options?: BinaryOptions): Promise<string | undefined>
  * @example
  *  const binaryPath = getBinPathSync()
  */
-export function getBinPathSync(options?: BinaryOptions): string | undefined;
+export function getBinPathSync(options?: BinaryOptions): string | undefined

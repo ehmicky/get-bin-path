@@ -1,9 +1,9 @@
-import { getBinPath, getBinPathSync } from 'get-bin-path';
+import { getBinPath, getBinPathSync } from 'get-bin-path'
 
 // Synchronous
-const binPath: string | undefined = getBinPathSync();
+const binPath: string | undefined = getBinPathSync()
 
 // Asynchronous
-(async () => {
-  const binPath: string | undefined = await getBinPath();
-})();
+;(async () => {
+  const binPath: string | undefined = await getBinPath()
+})()
