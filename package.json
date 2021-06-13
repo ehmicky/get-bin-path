@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "is-plain-obj": "^3.0.0",
-    "read-pkg-up": "^7.0.1"
+    "read-pkg-up": "^8.0.0"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.4",
