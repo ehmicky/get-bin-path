@@ -1,9 +1,9 @@
 import { cwd as getCwd, chdir } from 'process'
 
 import test from 'ava'
+// eslint-disable-next-line import/no-unresolved, node/no-missing-import
+import { getBinPath, getBinPathSync } from 'get-bin-path'
 import { each } from 'test-each'
-
-import { getBinPath, getBinPathSync } from '../src/main.js'
 
 import { normalizeBinPath } from './helpers/normalize.js'
 
