@@ -27,7 +27,7 @@ import { getBinPathSync } from 'get-bin-path'
 const binPath = getBinPathSync()
 ```
 
-<!-- eslint-disable node/no-missing-import, node/no-extraneous-import -->
+<!-- eslint-disable node/no-missing-import -->
 
 ```js
 // Test runner
