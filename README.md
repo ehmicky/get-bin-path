@@ -18,16 +18,12 @@ to hard-coding the path to the binary):
 
 # Examples
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { getBinPathSync } from 'get-bin-path'
 
 // `binPath` is the absolute path to the current package's binary
 const binPath = getBinPathSync()
 ```
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 // Test runner
@@ -53,8 +49,6 @@ npm install get-bin-path
 
 This returns the current package's binary absolute path:
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { getBinPathSync } from 'get-bin-path'
 
@@ -62,8 +56,6 @@ const binPath = getBinPathSync()
 ```
 
 This can be either synchronous or asynchronous:
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { getBinPath } from 'get-bin-path'
@@ -75,8 +67,6 @@ const asyncFunc = async () => {
 
 If there are several binaries, you can choose between them:
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { getBinPathSync } from 'get-bin-path'
 
@@ -84,8 +74,6 @@ const binPath = getBinPathSync({ name: 'binary-name' })
 ```
 
 The current directory can be overridden (for example with monorepos):
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { getBinPathSync } from 'get-bin-path'
