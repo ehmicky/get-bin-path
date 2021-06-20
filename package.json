@@ -54,7 +54,7 @@
     "@ehmicky/dev-tasks": "^1.0.33",
     "dtslint": "^4.0.0",
     "pkg-dir": "^5.0.0",
-    "test-each": "^2.0.1",
+    "test-each": "^3.0.0",
     "typescript": "^4.3.4"
   },
   "engines": {
