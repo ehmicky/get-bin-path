@@ -12,11 +12,6 @@
   "scripts": {
     "lint_types": "dtslint --localTs node_modules/typescript/lib types"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "gulp -LL check --full"
-    }
-  },
   "description": "Get the current package's binary path",
   "keywords": [
     "binary",
