@@ -2,7 +2,6 @@ import { cwd as getCwd, chdir } from 'process'
 import { fileURLToPath } from 'url'
 
 import test from 'ava'
-// eslint-disable-next-line import/no-unresolved, node/no-missing-import
 import { getBinPath, getBinPathSync } from 'get-bin-path'
 import { each } from 'test-each'
 
