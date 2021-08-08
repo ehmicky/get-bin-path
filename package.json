@@ -52,7 +52,7 @@
     "read-pkg-up": "^8.0.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.42",
+    "@ehmicky/dev-tasks": "^1.0.43",
     "dtslint": "^4.0.0",
     "pkg-dir": "^5.0.0",
     "test-each": "^3.0.1",
