@@ -1,8 +1,8 @@
 import { relative } from 'path'
 
-import pkgDir from 'pkg-dir'
+import { packageDirectory } from 'pkg-dir'
 
-const ROOT_DIR = pkgDir()
+const ROOT_DIR = packageDirectory({})
 
 export const normalizeBinPath = async function (binPath) {
   if (typeof binPath !== 'string') {
