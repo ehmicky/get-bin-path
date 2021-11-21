@@ -10,9 +10,6 @@
     "examples/**/*.{js,ts,map,json,sh,md}",
     "types/index.d.ts"
   ],
-  "scripts": {
-    "lint_types": "dtslint --localTs node_modules/typescript/lib types"
-  },
   "description": "Get the current package's binary path",
   "keywords": [
     "binary",
@@ -53,9 +50,9 @@
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.57",
-    "dtslint": "^4.2.1",
     "pkg-dir": "^6.0.0",
     "test-each": "^3.0.1",
+    "tsd": "^0.19.0",
     "typescript": "^4.5.2"
   },
   "engines": {
