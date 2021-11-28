@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "module": "esnext",
     "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
     "lib": ["esnext"],
     "strict": true,
     "noEmit": true,

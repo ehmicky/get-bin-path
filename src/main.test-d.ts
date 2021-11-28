@@ -1,4 +1,4 @@
-import { getBinPath, getBinPathSync } from '..'
+import { getBinPath, getBinPathSync } from 'get-bin-path'
 import { expectType } from 'tsd'
 
 expectType<string | undefined>(getBinPathSync())
