@@ -51,7 +51,7 @@
     "@ehmicky/dev-tasks": "^1.0.57",
     "pkg-dir": "^6.0.0",
     "test-each": "^3.0.1",
-    "tsd": "^0.19.0",
+    "tsd": "^0.19.1",
     "typescript": "^4.5.4"
   },
   "engines": {
