@@ -8,7 +8,7 @@ import { each } from 'test-each'
 import { normalizeBinPath } from './helpers/normalize.js'
 
 const PACKAGES_DIR = fileURLToPath(
-  new URL('./helpers/packages', import.meta.url),
+  new URL('helpers/packages', import.meta.url),
 )
 
 each(
