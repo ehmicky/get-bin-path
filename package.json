@@ -48,7 +48,7 @@
     "read-pkg-up": "^9.1.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.66",
+    "@ehmicky/dev-tasks": "^1.0.67",
     "pkg-dir": "^6.0.0",
     "test-each": "^4.0.0",
     "tsd": "^0.19.1",
