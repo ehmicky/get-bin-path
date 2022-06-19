@@ -19,10 +19,10 @@ to hard-coding the path to the binary):
 # Examples
 
 ```js
-import { getBinPathSync } from 'get-bin-path'
+import { getBinPath } from 'get-bin-path'
 
 // `binPath` is the absolute path to the current package's binary
-const binPath = getBinPathSync()
+const binPath = await getBinPath()
 ```
 
 ```js
@@ -32,8 +32,9 @@ import test from 'ava'
 import { execa } from 'execa'
 import { getBinPath } from 'get-bin-path'
 
+const binPath = await getBinPath()
+
 test('Binary file should return "true"', async (t) => {
-  const binPath = await getBinPath()
   const { stdout } = await execa(binPath)
   t.is(stdout, 'true')
 })
@@ -49,53 +50,34 @@ This package is an ES module and must be loaded using
 [an `import` or `import()` statement](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c),
 not `require()`.
 
-# Usage
+# API
 
-This returns the current package's binary absolute path:
+## getBinPath(options?)
 
-```js
-import { getBinPathSync } from 'get-bin-path'
+[`options`](#options): `object`\
+_Returns_: `Promise<string | undefined>`
 
-const binPath = getBinPathSync()
-```
-
-This can be either synchronous or asynchronous:
+Returns the current package's binary absolute path. When no `package.json` or
+binary can be found, `undefined` is returned instead.
 
 ```js
 import { getBinPath } from 'get-bin-path'
 
-const asyncFunc = async () => {
-  const binPath = await getBinPath()
-}
+const binPath = await getBinPath()
 ```
-
-If there are several binaries, you can choose between them:
-
-```js
-import { getBinPathSync } from 'get-bin-path'
-
-const binPath = getBinPathSync({ name: 'binary-name' })
-```
-
-The current directory can be overridden (for example with monorepos):
-
-```js
-import { getBinPathSync } from 'get-bin-path'
-
-const binPath = getBinPathSync({ cwd: '/currentDirectory' })
-```
-
-When no `package.json` or binary can be found, `undefined` is returned instead.
 
 ## getBinPathSync(options?)
 
 [`options`](#options): `object`\
 _Returns_: `string | undefined`
 
-## getBinPath(options?)
+Same but synchronous.
 
-[`options`](#options): `object`\
-_Returns_: `Promise<string | undefined>`
+```js
+import { getBinPathSync } from 'get-bin-path'
+
+const binPath = getBinPathSync()
+```
 
 ### options
 
@@ -116,8 +98,6 @@ _Default_: Current directory
 
 Override the current directory, which is used when retrieving the
 `package.json`.
-
-This is useful when using monorepos.
 
 # See also
 

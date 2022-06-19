@@ -7,7 +7,7 @@
   "types": "./build/src/main.d.ts",
   "files": [
     "build/src/**/*.{js,d.ts,map,json,sh,md}",
-    "examples/**/*.{js,ts,map,json,sh,md}"
+    "examples/**/*.{js,d.ts,map,json,sh,md}"
   ],
   "description": "Get the current package's binary path",
   "keywords": [
@@ -19,12 +19,12 @@
     "unit-testing",
     "testing",
     "bin",
-    "directory",
     "cwd",
     "executable",
     "package-manager",
     "nodejs",
     "javascript",
+    "typescript",
     "es6",
     "cli",
     "shell",

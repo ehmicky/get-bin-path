@@ -1,44 +1,39 @@
-/**
- * Options for the getBinPath() function.
- */
-export interface BinaryOptions {
+export type BinaryOptions = Partial<{
   /**
-   * Name of the binary. Only needs to be specified when the package exports several binaries.
+   * Name of the binary. Only needs to be specified when the package exports
+   * several binaries.
    *
    * @default `package.json` `name` property
-   * @type {string}
    */
-  name?: string
+  name: string
 
   /**
-   * Override the current directory, which is used when retrieving the `package.json`.
+   * Override the current directory, which is used when retrieving the
+   * `package.json`.
    *
-   * @default Current directory
-   * @type {string}
+   * @default "."
    */
-  cwd?: string
-}
+  cwd: string
+}>
 
 /**
- * Get the current package's binary path.
- *
- * @param {BinaryOptions} [options={}]        Additional options for the binary.
- * @returns {(Promise<string | undefined>)}
- *  Returns the binary absolute path and returns `undefined` if it could not be found.
+ * Get the current package's binary path (using the `package.json`
+ * [`bin` field](https://docs.npmjs.com/files/package.json#bin)).
  *
  * @example
- *  const binaryPath = await getBinPath()
+ * ```js
+ * const binPath = await getBinPath()
+ * ```
  */
 export function getBinPath(options?: BinaryOptions): Promise<string | undefined>
 
 /**
- * Get the current package's binary path synchronously.
- *
- * @param {BinaryOptions} [options={}]        Additional options for the binary.
- * @returns {string | undefined}
- *  Returns the binary absolute path and returns `undefined` if it could not be found.
+ * Get the current package's binary path (using the `package.json`
+ * [`bin` field](https://docs.npmjs.com/files/package.json#bin)).
  *
  * @example
- *  const binaryPath = getBinPathSync()
+ * ```js
+ * const binPath = getBinPathSync()
+ * ```
  */
 export function getBinPathSync(options?: BinaryOptions): string | undefined
