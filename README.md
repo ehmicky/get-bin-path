@@ -1,7 +1,6 @@
 <img src="https://raw.githubusercontent.com/ehmicky/design/main/get-bin-path/get-bin-path.svg?sanitize=true" width="500"/>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/get-bin-path.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/get-bin-path)
-[![Build](https://github.com/ehmicky/get-bin-path/workflows/Build/badge.svg)](https://github.com/ehmicky/get-bin-path/actions)
 [![Node](https://img.shields.io/node/v/get-bin-path.svg?logo=node.js)](https://www.npmjs.com/package/get-bin-path)
 [![Twitter](https://img.shields.io/badge/%E2%80%8B-twitter-4cc61e.svg?logo=twitter)](https://twitter.com/intent/follow?screen_name=ehmicky)
 [![Medium](https://img.shields.io/badge/%E2%80%8B-medium-4cc61e.svg?logo=medium)](https://medium.com/@ehmicky)
