@@ -1,10 +1,11 @@
-import { getBinPath, getBinPathSync, BinaryOptions } from 'get-bin-path'
 import {
   expectError,
   expectAssignable,
   expectNotAssignable,
   expectType,
 } from 'tsd'
+
+import { getBinPath, getBinPathSync, BinaryOptions } from './main.js'
 
 expectType<string | undefined>(await getBinPath())
 expectType<string | undefined>(getBinPathSync())
