@@ -1,4 +1,7 @@
-<img src="https://raw.githubusercontent.com/ehmicky/design/main/get-bin-path/get-bin-path.svg?sanitize=true" width="500"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ehmicky/design/main/get-bin-path/get-bin-path_dark.svg"/>
+  <img alt="get-bin-path logo" src="https://raw.githubusercontent.com/ehmicky/design/main/get-bin-path/get-bin-path.svg" width="500"/>
+</picture>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/get-bin-path.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/get-bin-path)
 [![Node](https://img.shields.io/node/v/get-bin-path.svg?logo=node.js)](https://www.npmjs.com/package/get-bin-path)
