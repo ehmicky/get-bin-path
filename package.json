@@ -33,7 +33,7 @@
     "library"
   ],
   "license": "Apache-2.0",
-  "homepage": "https://git.io/fjKse",
+  "homepage": "https://www.github.com/ehmicky/get-bin-path",
   "repository": "ehmicky/get-bin-path",
   "bugs": {
     "url": "https://github.com/ehmicky/get-bin-path/issues"
