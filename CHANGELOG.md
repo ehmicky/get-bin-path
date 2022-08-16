@@ -1,3 +1,9 @@
+# 7.1.0
+
+## Features
+
+- Reduce npm package size
+
 # 7.0.0
 
 ## Breaking changes
