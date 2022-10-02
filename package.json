@@ -47,7 +47,7 @@
     "read-pkg-up": "^9.1.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.91",
+    "@ehmicky/dev-tasks": "^1.0.92",
     "pkg-dir": "^6.0.0",
     "test-each": "^5.4.0",
     "typescript": "^4.8.2"
