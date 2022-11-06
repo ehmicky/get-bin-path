@@ -1,3 +1,9 @@
+# 7.2.1
+
+## Bug fixes
+
+- Fix `package.json`
+
 # 7.2.0
 
 ## Features

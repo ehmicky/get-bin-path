@@ -12,6 +12,10 @@
     "build/src/**/*.{js,json}",
     "build/types/**/*.d.ts"
   ],
+  "sideEffects": false,
+  "scripts": {
+    "test": "gulp test"
+  },
   "description": "Get the current package's binary path",
   "keywords": [
     "binary",
