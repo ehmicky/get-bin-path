@@ -53,7 +53,7 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.99",
     "pkg-dir": "^6.0.0",
-    "test-each": "^5.4.1",
+    "test-each": "^5.4.2",
     "typescript": "^4.8.2"
   },
   "engines": {
