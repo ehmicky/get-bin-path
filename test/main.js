@@ -1,5 +1,5 @@
-import { cwd as getCwd, chdir } from 'process'
-import { fileURLToPath } from 'url'
+import { cwd as getCwd, chdir } from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 import test from 'ava'
 import { getBinPath, getBinPathSync } from 'get-bin-path'

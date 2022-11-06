@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 
 import isPlainObj from 'is-plain-obj'
 import { readPackageUp, readPackageUpSync } from 'read-pkg-up'
