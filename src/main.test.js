@@ -1,13 +1,23 @@
+import { relative } from 'node:path'
 import { cwd as getCwd, chdir } from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 import test from 'ava'
 import { getBinPath, getBinPathSync } from 'get-bin-path'
+import { packageDirectory } from 'pkg-dir'
 import { each } from 'test-each'
 
-import { normalizeBinPath } from './helpers/normalize.test.js'
+const FIXTURES_DIR = fileURLToPath(new URL('fixtures', import.meta.url))
+const ROOT_DIR = packageDirectory({})
 
-const PACKAGES_DIR = fileURLToPath(new URL('helpers/packages', import.meta.url))
+const normalizeBinPath = async function (binPath) {
+  if (typeof binPath !== 'string') {
+    return binPath
+  }
+
+  const rootDir = await ROOT_DIR
+  return relative(rootDir, binPath).replace(/\\/gu, '/')
+}
 
 each(
   [getBinPath, getBinPathSync],
@@ -35,7 +45,7 @@ each(
   ],
   ({ title }, getBinFunc, [name, cwd]) => {
     test(`main tests | ${title}`, async (t) => {
-      const cwdA = cwd === '/' ? cwd : `${PACKAGES_DIR}/${cwd}`
+      const cwdA = cwd === '/' ? cwd : `${FIXTURES_DIR}/${cwd}`
       const binPath = await getBinFunc({ name, cwd: cwdA })
       const normalizedPath = await normalizeBinPath(binPath)
 
@@ -48,7 +58,7 @@ each([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
   // This needs to run serially because we change the global `cwd`
   test.serial(`no options | ${title}`, async (t) => {
     const currentDir = getCwd()
-    chdir(`${PACKAGES_DIR}/string`)
+    chdir(`${FIXTURES_DIR}/string`)
 
     const binPath = await getBinFunc()
     const normalizedPath = await normalizeBinPath(binPath)
