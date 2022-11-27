@@ -1,3 +1,11 @@
+# 8.0.0
+
+## Breaking changes
+
+- Add support for the
+  [`directories.bin` field](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
+  in `package.json`
+
 # 7.3.0
 
 ## Features

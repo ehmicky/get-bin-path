@@ -1,3 +1,6 @@
+/**
+ * `get-bin-path` options
+ */
 export type BinaryOptions = Partial<{
   /**
    * Name of the binary. Only needs to be specified when the package exports
@@ -18,7 +21,9 @@ export type BinaryOptions = Partial<{
 
 /**
  * Get the current package's binary path (using the `package.json`
- * [`bin` field](https://docs.npmjs.com/files/package.json#bin)).
+ * [`bin`](https://docs.npmjs.com/files/package.json#bin) or
+ * [`directories.bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
+ * field).
  *
  * @example
  * ```js
@@ -29,7 +34,9 @@ export function getBinPath(options?: BinaryOptions): Promise<string | undefined>
 
 /**
  * Get the current package's binary path (using the `package.json`
- * [`bin` field](https://docs.npmjs.com/files/package.json#bin)).
+ * [`bin`](https://docs.npmjs.com/files/package.json#bin) or
+ * [`directories.bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
+ * field).
  *
  * @example
  * ```js

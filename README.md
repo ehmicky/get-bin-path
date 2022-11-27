@@ -10,14 +10,17 @@
 [![Medium](https://img.shields.io/badge/-Medium-808080.svg?logo=medium&colorA=404040)](https://medium.com/@ehmicky)
 
 Get the current package's binary path (using the `package.json`
-[`bin` field](https://docs.npmjs.com/files/package.json#bin)).
+[`bin`](https://docs.npmjs.com/files/package.json#bin) or
+[`directories.bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
+field).
 
 This is useful when testing a package's binary. Using `get-bin-path` (as opposed
 to hard-coding the path to the binary):
 
-- validates that the `package.json` `bin` field is correctly setup.
+- validates that the `package.json` `bin` or `directories.bin` field is
+  correctly setup
 - decouples the binary path from the tests, which allows moving the file without
-  rewriting the tests.
+  rewriting the tests
 
 # Examples
 
