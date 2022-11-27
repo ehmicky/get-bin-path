@@ -1,3 +1,10 @@
+# 7.3.0
+
+## Features
+
+- Reduce package size
+- Improve performance
+
 # 7.2.1
 
 ## Bug fixes
