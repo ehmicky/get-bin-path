@@ -2,6 +2,8 @@ import { readdirSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
+// Look for `package.json` `directories.bin` field.
+// It points to a directory with binaries.
 export const getDirField = async function ({ directories, rootDir, name }) {
   const binDir = getBinDir(directories, rootDir)
 
@@ -15,6 +17,7 @@ export const getDirField = async function ({ directories, rootDir, name }) {
   } catch {}
 }
 
+// Same but sync.
 export const getDirFieldSync = function ({ directories, rootDir, name }) {
   const binDir = getBinDir(directories, rootDir)
 
