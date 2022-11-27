@@ -1,12 +1,13 @@
 import { resolve } from 'node:path'
 
-// `bin` field can either be a `string` or an `object`
-export const getAbsoluteBinField = function ({ packageBin, rootDir, name }) {
-  const binField = getBinField(packageBin, name)
+// Look for `package.json` `bin` field.
+// It can be either a `string` or an `object`.
+export const getBinField = function ({ packageBin, rootDir, name }) {
+  const binField = getRelativeBinField(packageBin, name)
   return binField === undefined ? undefined : resolve(rootDir, binField)
 }
 
-const getBinField = function (packageBin, name) {
+const getRelativeBinField = function (packageBin, name) {
   if (isInvalidBin(packageBin)) {
     return
   }

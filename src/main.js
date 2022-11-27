@@ -6,7 +6,7 @@ import escalade from 'escalade'
 // eslint-disable-next-line n/file-extension-in-import
 import escaladeSync from 'escalade/sync'
 
-import { getAbsoluteBinField } from './bin.js'
+import { getBinField } from './bin.js'
 import { getDirField, getDirFieldSync } from './directories.js'
 
 /**
@@ -35,7 +35,7 @@ export const getBinPath = async function (opts) {
     packageJsonContents,
     name,
   )
-  const binField = getAbsoluteBinField(packageJsonFields)
+  const binField = getBinField(packageJsonFields)
   return binField === undefined
     ? await getDirField(packageJsonFields)
     : binField
@@ -66,7 +66,7 @@ export const getBinPathSync = function (opts) {
     packageJsonContents,
     name,
   )
-  const binField = getAbsoluteBinField(packageJsonFields)
+  const binField = getBinField(packageJsonFields)
   return binField === undefined ? getDirFieldSync(packageJsonFields) : binField
 }
 
