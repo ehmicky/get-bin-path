@@ -1,7 +1,10 @@
+import { readFileSync } from 'node:fs'
+import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-import isPlainObj from 'is-plain-obj'
-import { readPackageUp, readPackageUpSync } from 'read-pkg-up'
+import escalade from 'escalade'
+// eslint-disable-next-line n/file-extension-in-import
+import escaladeSync from 'escalade/sync'
 
 /**
  * Get the current package's binary path.
@@ -15,11 +18,17 @@ import { readPackageUp, readPackageUpSync } from 'read-pkg-up'
  *
  * @example const binaryPath = await getBinPath()
  */
-export const getBinPath = async function ({ name, cwd } = {}) {
-  // We don't use `normalize` because we don't really need it, so it's faster
-  // and it removes a dependency
-  const packageResult = await readPackageUp({ cwd, normalize: false })
-  return getBinaryPath(packageResult, name)
+export const getBinPath = async function (opts) {
+  const { name, cwd } = normalizeOpts(opts)
+  const packageJsonPath = await escalade(cwd, findPackageJson)
+
+  // `package.json` not found
+  if (packageJsonPath === undefined) {
+    return
+  }
+
+  const packageJsonContents = await readFile(packageJsonPath)
+  return getBinaryPath(packageJsonPath, packageJsonContents, name)
 }
 
 /**
@@ -33,22 +42,32 @@ export const getBinPath = async function ({ name, cwd } = {}) {
  *
  * @example const binaryPath = getBinPathSync()
  */
-export const getBinPathSync = function ({ name, cwd } = {}) {
-  const packageResult = readPackageUpSync({ cwd, normalize: false })
-  return getBinaryPath(packageResult, name)
-}
+export const getBinPathSync = function (opts) {
+  const { name, cwd } = normalizeOpts(opts)
+  const packageJsonPath = escaladeSync(cwd, findPackageJson)
 
-const getBinaryPath = function (packageResult, name) {
-  // No `package.json` found
-  if (packageResult === undefined) {
+  if (packageJsonPath === undefined) {
     return
   }
 
-  const {
-    packageJson: { bin: packageBin, name: packageName },
-    path: packagePath,
-  } = packageResult
+  const packageJsonContents = readFileSync(packageJsonPath)
+  return getBinaryPath(packageJsonPath, packageJsonContents, name)
+}
 
+const normalizeOpts = function ({ name, cwd = '.' } = {}) {
+  return { name, cwd }
+}
+
+const findPackageJson = function (dirname, filenames) {
+  return filenames.find(isPackageJson)
+}
+
+const isPackageJson = function (filename) {
+  return filename === 'package.json'
+}
+
+const getBinaryPath = function (packageJsonPath, packageJsonContents, name) {
+  const { bin: packageBin, name: packageName } = JSON.parse(packageJsonContents)
   const relativePath = getRelativePath(packageBin, packageName, name)
 
   // Binary not found in `package.json`
@@ -56,8 +75,7 @@ const getBinaryPath = function (packageResult, name) {
     return
   }
 
-  const absolutePath = resolve(packagePath, '..', relativePath)
-  return absolutePath
+  return resolve(packageJsonPath, '..', relativePath)
 }
 
 // `bin` field can either be a `string` or an `object`
@@ -71,17 +89,12 @@ const getRelativePath = function (packageBin, packageName, name = packageName) {
   }
 
   const keys = Object.keys(packageBin)
-
-  if (keys.length === 1) {
-    return packageBin[keys[0]]
-  }
-
-  return packageBin[name]
+  return keys.length === 1 ? packageBin[keys[0]] : packageBin[name]
 }
 
 const isInvalidBin = function (packageBin) {
   return (
     packageBin === undefined ||
-    (typeof packageBin !== 'string' && !isPlainObj(packageBin))
+    (typeof packageBin !== 'string' && typeof packageBin !== 'object')
   )
 }
