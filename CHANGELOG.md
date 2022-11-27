@@ -3,6 +3,8 @@
 ## Features
 
 - Reduce package size
+  [by 96%](https://packagephobia.com/result?p=get-bin-path@7.3.0) (764kB to
+  31kB)
 - Improve performance
 
 # 7.2.1
