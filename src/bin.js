@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 
 // `bin` field can either be a `string` or an `object`
-export const getAbsoluteBinField = function (packageBin, rootDir, name) {
+export const getAbsoluteBinField = function ({ packageBin, rootDir, name }) {
   const binField = getBinField(packageBin, name)
   return binField === undefined ? undefined : resolve(rootDir, binField)
 }

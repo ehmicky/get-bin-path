@@ -31,15 +31,14 @@ export const getBinPath = async function (opts) {
   }
 
   const packageJsonContents = await readFile(packageJsonPath)
-  const {
-    packageBin,
-    directories,
-    rootDir,
-    name: nameA,
-  } = parsePackageJson(packageJsonPath, packageJsonContents, name)
-  const binField = getAbsoluteBinField(packageBin, rootDir, nameA)
+  const packageJsonFields = parsePackageJson(
+    packageJsonPath,
+    packageJsonContents,
+    name,
+  )
+  const binField = getAbsoluteBinField(packageJsonFields)
   return binField === undefined
-    ? await getDirField(directories, rootDir, nameA)
+    ? await getDirField(packageJsonFields)
     : binField
 }
 
@@ -63,16 +62,13 @@ export const getBinPathSync = function (opts) {
   }
 
   const packageJsonContents = readFileSync(packageJsonPath)
-  const {
-    packageBin,
-    directories,
-    rootDir,
-    name: nameA,
-  } = parsePackageJson(packageJsonPath, packageJsonContents, name)
-  const binField = getAbsoluteBinField(packageBin, rootDir, nameA)
-  return binField === undefined
-    ? getDirFieldSync(directories, rootDir, nameA)
-    : binField
+  const packageJsonFields = parsePackageJson(
+    packageJsonPath,
+    packageJsonContents,
+    name,
+  )
+  const binField = getAbsoluteBinField(packageJsonFields)
+  return binField === undefined ? getDirFieldSync(packageJsonFields) : binField
 }
 
 const normalizeOpts = function ({ name, cwd = '.' } = {}) {

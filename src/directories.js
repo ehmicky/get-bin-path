@@ -2,7 +2,7 @@ import { readdirSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-export const getDirField = async function (directories, rootDir, name) {
+export const getDirField = async function ({ directories, rootDir, name }) {
   const absoluteBinDir = getAbsoluteBinDir(directories, rootDir)
 
   if (absoluteBinDir === undefined) {
@@ -15,7 +15,7 @@ export const getDirField = async function (directories, rootDir, name) {
   } catch {}
 }
 
-export const getDirFieldSync = function (directories, rootDir, name) {
+export const getDirFieldSync = function ({ directories, rootDir, name }) {
   const absoluteBinDir = getAbsoluteBinDir(directories, rootDir)
 
   if (absoluteBinDir === undefined) {
