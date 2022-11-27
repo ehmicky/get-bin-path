@@ -1,6 +1,6 @@
-import { readFileSync } from 'node:fs'
-import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { readFileSync, readdirSync } from 'node:fs'
+import { readFile, readdir } from 'node:fs/promises'
+import { resolve, dirname } from 'node:path'
 
 import escalade from 'escalade'
 // eslint-disable-next-line n/file-extension-in-import
@@ -28,7 +28,19 @@ export const getBinPath = async function (opts) {
   }
 
   const packageJsonContents = await readFile(packageJsonPath)
-  return getBinaryPath(packageJsonPath, packageJsonContents, name)
+  const {
+    packageBin,
+    directories,
+    rootDir,
+    name: nameA,
+  } = parsePackageJson(packageJsonPath, packageJsonContents, name)
+  const binField = getAbsoluteBinField(packageBin, rootDir, nameA)
+
+  if (binField !== undefined) {
+    return binField
+  }
+
+  return await getDirField(directories, rootDir, nameA)
 }
 
 /**
@@ -51,14 +63,26 @@ export const getBinPathSync = function (opts) {
   }
 
   const packageJsonContents = readFileSync(packageJsonPath)
-  return getBinaryPath(packageJsonPath, packageJsonContents, name)
+  const {
+    packageBin,
+    directories,
+    rootDir,
+    name: nameA,
+  } = parsePackageJson(packageJsonPath, packageJsonContents, name)
+  const binField = getAbsoluteBinField(packageBin, rootDir, nameA)
+
+  if (binField !== undefined) {
+    return binField
+  }
+
+  return getDirFieldSync(directories, rootDir, nameA)
 }
 
 const normalizeOpts = function ({ name, cwd = '.' } = {}) {
   return { name, cwd }
 }
 
-const findPackageJson = function (dirname, filenames) {
+const findPackageJson = function (_, filenames) {
   return filenames.find(isPackageJson)
 }
 
@@ -66,20 +90,23 @@ const isPackageJson = function (filename) {
   return filename === 'package.json'
 }
 
-const getBinaryPath = function (packageJsonPath, packageJsonContents, name) {
-  const { bin: packageBin, name: packageName } = JSON.parse(packageJsonContents)
-  const relativePath = getRelativePath(packageBin, packageName, name)
-
-  // Binary not found in `package.json`
-  if (relativePath === undefined) {
-    return
-  }
-
-  return resolve(packageJsonPath, '..', relativePath)
+const parsePackageJson = function (packageJsonPath, packageJsonContents, name) {
+  const {
+    name: packageName,
+    bin: packageBin,
+    directories,
+  } = JSON.parse(packageJsonContents)
+  const rootDir = dirname(packageJsonPath)
+  return { packageBin, directories, rootDir, name: name ?? packageName }
 }
 
 // `bin` field can either be a `string` or an `object`
-const getRelativePath = function (packageBin, packageName, name = packageName) {
+const getAbsoluteBinField = function (packageBin, rootDir, name) {
+  const binField = getBinField(packageBin, name)
+  return binField === undefined ? undefined : resolve(rootDir, binField)
+}
+
+const getBinField = function (packageBin, name) {
   if (isInvalidBin(packageBin)) {
     return
   }
@@ -88,8 +115,8 @@ const getRelativePath = function (packageBin, packageName, name = packageName) {
     return packageBin
   }
 
-  const keys = Object.keys(packageBin)
-  return keys.length === 1 ? packageBin[keys[0]] : packageBin[name]
+  const paths = Object.keys(packageBin)
+  return paths.length === 1 ? packageBin[paths[0]] : packageBin[name]
 }
 
 const isInvalidBin = function (packageBin) {
@@ -97,4 +124,36 @@ const isInvalidBin = function (packageBin) {
     packageBin === undefined ||
     (typeof packageBin !== 'string' && typeof packageBin !== 'object')
   )
+}
+
+const getDirField = async function (directories, rootDir, name) {
+  const absoluteBinDir = getAbsoluteBinDir(directories, rootDir)
+
+  if (absoluteBinDir === undefined) {
+    return
+  }
+
+  const paths = await readdir(absoluteBinDir)
+  return findDirField(paths, name)
+}
+
+const getDirFieldSync = function (directories, rootDir, name) {
+  const absoluteBinDir = getAbsoluteBinDir(directories, rootDir)
+
+  if (absoluteBinDir === undefined) {
+    return
+  }
+
+  const paths = readdirSync(absoluteBinDir)
+  return findDirField(paths, name)
+}
+
+const getAbsoluteBinDir = function (directories, rootDir) {
+  return typeof directories !== 'object' || typeof directories.bin !== 'string'
+    ? undefined
+    : resolve(rootDir, directories.bin)
+}
+
+const findDirField = function (paths, name) {
+  return paths.includes(name) ? name : paths[0]
 }
