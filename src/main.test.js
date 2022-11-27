@@ -1,3 +1,4 @@
+import { mkdir } from 'node:fs/promises'
 import { relative } from 'node:path'
 import { cwd as getCwd, chdir } from 'node:process'
 import { fileURLToPath } from 'node:url'
@@ -70,7 +71,7 @@ each(
     [undefined, 'dir_both', 'bin/other.js'],
   ],
   ({ title }, getBinFunc, [name, fixtureName, result]) => {
-    test(`main tests | ${title}`, async (t) => {
+    test(`Main tests | ${title}`, async (t) => {
       const cwd =
         fixtureName === undefined ? '/' : `${FIXTURES_DIR}/${fixtureName}`
       const binPath = await getBinFunc({ name, cwd })
@@ -89,7 +90,7 @@ each(
 
 each([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
   // This needs to run serially because we change the global `cwd`
-  test.serial(`no options | ${title}`, async (t) => {
+  test.serial(`No options | ${title}`, async (t) => {
     const currentDir = getCwd()
     const fixtureName = 'string'
     chdir(`${FIXTURES_DIR}/${fixtureName}`)
@@ -100,5 +101,11 @@ each([getBinPath, getBinPathSync], ({ title }, getBinFunc) => {
       normalizePath(binPath),
       `${normalizePath(FIXTURES_DIR)}/${fixtureName}/bin/test.js`,
     )
+  })
+
+  test(`Empty directory | ${title}`, async (t) => {
+    const cwd = `${FIXTURES_DIR}/dir_empty`
+    await mkdir(`${cwd}/bin`, { recursive: true })
+    t.is(await getBinFunc({ cwd }), undefined)
   })
 })
