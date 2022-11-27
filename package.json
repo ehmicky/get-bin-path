@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.139",
-    "pkg-dir": "^6.0.0",
+    "pkg-dir": "^7.0.0",
     "test-each": "^5.6.0"
   },
   "engines": {
