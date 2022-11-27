@@ -1,0 +1,7 @@
+{
+  "name": "test",
+  "bin": "bin/other.js",
+  "directories": {
+    "bin": "bin"
+  }
+}

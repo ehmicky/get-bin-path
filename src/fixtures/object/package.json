@@ -1,7 +1,0 @@
-{
-  "name": "test-object",
-  "bin": {
-    "test": "bin/test.js",
-    "test-object": "bin/test-object.js"
-  }
-}

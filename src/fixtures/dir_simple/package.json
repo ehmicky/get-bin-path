@@ -1,0 +1,6 @@
+{
+  "name": "test-simple",
+  "directories": {
+    "bin": "bin"
+  }
+}

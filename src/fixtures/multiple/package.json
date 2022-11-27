@@ -1,0 +1,7 @@
+{
+  "name": "test",
+  "bin": {
+    "test": "bin/test.js",
+    "other": "bin/other.js"
+  }
+}

@@ -120,10 +120,7 @@ const getBinField = function (packageBin, name) {
 }
 
 const isInvalidBin = function (packageBin) {
-  return (
-    packageBin === undefined ||
-    (typeof packageBin !== 'string' && typeof packageBin !== 'object')
-  )
+  return typeof packageBin !== 'string' && typeof packageBin !== 'object'
 }
 
 const getDirField = async function (directories, rootDir, name) {
@@ -133,8 +130,10 @@ const getDirField = async function (directories, rootDir, name) {
     return
   }
 
-  const paths = await readdir(absoluteBinDir)
-  return findDirField(paths, name)
+  try {
+    const paths = await readdir(absoluteBinDir)
+    return findDirField(paths, absoluteBinDir, name)
+  } catch {}
 }
 
 const getDirFieldSync = function (directories, rootDir, name) {
@@ -144,16 +143,19 @@ const getDirFieldSync = function (directories, rootDir, name) {
     return
   }
 
-  const paths = readdirSync(absoluteBinDir)
-  return findDirField(paths, name)
+  try {
+    const paths = readdirSync(absoluteBinDir)
+    return findDirField(paths, absoluteBinDir, name)
+  } catch {}
 }
 
 const getAbsoluteBinDir = function (directories, rootDir) {
-  return typeof directories !== 'object' || typeof directories.bin !== 'string'
-    ? undefined
-    : resolve(rootDir, directories.bin)
+  return typeof directories?.bin === 'string'
+    ? resolve(rootDir, directories.bin)
+    : undefined
 }
 
-const findDirField = function (paths, name) {
-  return paths.includes(name) ? name : paths[0]
+const findDirField = function (paths, absoluteBinDir, name) {
+  const dirField = paths.includes(name) ? name : paths[0]
+  return dirField === undefined ? undefined : resolve(absoluteBinDir, dirField)
 }

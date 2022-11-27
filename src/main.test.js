@@ -20,23 +20,54 @@ each(
     // No `package.json`
     [undefined, undefined, undefined],
 
-    // Invalid `bin` fields
-    [undefined, 'boolean', undefined],
+    // No `bin` nor `directories`
     [undefined, 'none', undefined],
 
-    // Invalid `name`
-    ['invalid', 'object'],
+    // Invalid `bin`
+    [undefined, 'boolean', undefined],
 
-    // Using default `name`
+    // String `bin`
     [undefined, 'string', 'bin/test.js'],
-    ['anything', 'string', 'bin/test.js'],
-    [undefined, 'object', 'bin/test-object.js'],
-
-    // Valid input when `bin` is string or object
     ['test', 'string', 'bin/test.js'],
-    ['test', 'object', 'bin/test.js'],
+    ['unknown', 'string', 'bin/test.js'],
+
+    // Object `bin` with single entry
     [undefined, 'simple', 'bin/test.js'],
     ['test', 'simple', 'bin/test.js'],
+    ['unknown', 'simple', 'bin/test.js'],
+
+    // Object `bin` with multiple entries
+    [undefined, 'multiple', 'bin/test.js'],
+    ['test', 'multiple', 'bin/test.js'],
+    ['other', 'multiple', 'bin/other.js'],
+    ['unknown', 'multiple', undefined],
+
+    // `directories` present but not `directories.bin`
+    [undefined, 'dir_undefined', undefined],
+
+    // `directories.bin` not a string
+    [undefined, 'dir_boolean', undefined],
+
+    // `directories.bin` pointing to missing directory
+    [undefined, 'dir_missing', undefined],
+
+    // `directories.bin` with single entry
+    [undefined, 'dir_simple', 'bin/test.js'],
+    ['test', 'dir_simple', 'bin/test.js'],
+    ['unknown', 'dir_simple', 'bin/test.js'],
+
+    // `directories.bin` with multiple entries, including one with same name
+    [undefined, 'dir_multiple', 'bin/test'],
+    ['test', 'dir_multiple', 'bin/test'],
+    ['other', 'dir_multiple', 'bin/other'],
+    ['unknown', 'dir_multiple', 'bin/other'],
+
+    // `directories.bin` with multiple entries, but none with same name
+    [undefined, 'dir_different', 'bin/other'],
+    ['unknown', 'dir_multiple', 'bin/other'],
+
+    // Both `bin` and `directories.bin`
+    [undefined, 'dir_both', 'bin/other.js'],
   ],
   ({ title }, getBinFunc, [name, fixtureName, result]) => {
     test(`main tests | ${title}`, async (t) => {
