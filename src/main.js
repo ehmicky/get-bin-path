@@ -25,7 +25,6 @@ export const getBinPath = async function (opts) {
   const { name, cwd } = normalizeOpts(opts)
   const packageJsonPath = await escalade(cwd, findPackageJson)
 
-  // `package.json` not found
   if (packageJsonPath === undefined) {
     return
   }
