@@ -5,7 +5,7 @@ import test from 'ava'
 import { getBinPath, getBinPathSync } from 'get-bin-path'
 import { each } from 'test-each'
 
-import { normalizeBinPath } from './helpers/normalize.js'
+import { normalizeBinPath } from './helpers/normalize.test.js'
 
 const PACKAGES_DIR = fileURLToPath(new URL('helpers/packages', import.meta.url))
 
