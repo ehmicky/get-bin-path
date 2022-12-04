@@ -141,6 +141,7 @@ Thanks go to our wonderful contributors:
       <td align="center"><a href="http://evocateur.org/"><img src="https://avatars3.githubusercontent.com/u/5605?v=4?s=100" width="100px;" alt="Daniel Stockman"/><br /><sub><b>Daniel Stockman</b></sub></a><br /><a href="https://github.com/ehmicky/get-bin-path/commits?author=evocateur" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/kabirbaidhya"><img src="https://avatars1.githubusercontent.com/u/3315763?v=4?s=100" width="100px;" alt="Kabir Baidhya"/><br /><sub><b>Kabir Baidhya</b></sub></a><br /><a href="https://github.com/ehmicky/get-bin-path/commits?author=kabirbaidhya" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/NMinhNguyen"><img src="https://avatars.githubusercontent.com/u/2852660?v=4?s=100" width="100px;" alt="Minh Nguyen"/><br /><sub><b>Minh Nguyen</b></sub></a><br /><a href="#ideas-NMinhNguyen" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/tmillr"><img src="https://avatars.githubusercontent.com/u/45028928?v=4?s=100" width="100px;" alt="Tyler Miller"/><br /><sub><b>Tyler Miller</b></sub></a><br /><a href="#ideas-tmillr" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
