@@ -21,7 +21,7 @@ import { getDirField, getDirFieldSync } from './directories.js'
  *
  * @example const binaryPath = await getBinPath()
  */
-export const getBinPath = async function (opts) {
+export const getBinPath = async (opts) => {
   const { name, cwd } = normalizeOpts(opts)
   const packageJsonPath = await escalade(cwd, findPackageJson)
 
@@ -52,7 +52,7 @@ export const getBinPath = async function (opts) {
  *
  * @example const binaryPath = getBinPathSync()
  */
-export const getBinPathSync = function (opts) {
+export const getBinPathSync = (opts) => {
   const { name, cwd } = normalizeOpts(opts)
   const packageJsonPath = escaladeSync(cwd, findPackageJson)
 
@@ -70,19 +70,13 @@ export const getBinPathSync = function (opts) {
   return binField === undefined ? getDirFieldSync(packageJsonFields) : binField
 }
 
-const normalizeOpts = function ({ name, cwd = '.' } = {}) {
-  return { name, cwd }
-}
+const normalizeOpts = ({ name, cwd = '.' } = {}) => ({ name, cwd })
 
-const findPackageJson = function (_, filenames) {
-  return filenames.find(isPackageJson)
-}
+const findPackageJson = (_, filenames) => filenames.find(isPackageJson)
 
-const isPackageJson = function (filename) {
-  return filename === 'package.json'
-}
+const isPackageJson = (filename) => filename === 'package.json'
 
-const parsePackageJson = function (packageJsonPath, packageJsonContents, name) {
+const parsePackageJson = (packageJsonPath, packageJsonContents, name) => {
   const {
     name: packageName,
     bin: packageBin,

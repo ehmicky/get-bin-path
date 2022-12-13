@@ -12,9 +12,8 @@ import { getBinPath, getBinPathSync } from 'get-bin-path'
 const ROOT_DIR = packageDirectorySync({})
 const FIXTURES_DIR = fileURLToPath(new URL('fixtures', import.meta.url))
 
-const normalizePath = function (binPath) {
-  return relative(ROOT_DIR, binPath).replace(/\\/gu, '/')
-}
+const normalizePath = (binPath) =>
+  relative(ROOT_DIR, binPath).replace(/\\/gu, '/')
 
 each(
   [getBinPath, getBinPathSync],

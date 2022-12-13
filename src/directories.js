@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 
 // Look for `package.json` `directories.bin` field.
 // It points to a directory with binaries.
-export const getDirField = async function ({ directories, rootDir, name }) {
+export const getDirField = async ({ directories, rootDir, name }) => {
   const binDir = getBinDir(directories, rootDir)
 
   if (binDir === undefined) {
@@ -18,7 +18,7 @@ export const getDirField = async function ({ directories, rootDir, name }) {
 }
 
 // Same but sync.
-export const getDirFieldSync = function ({ directories, rootDir, name }) {
+export const getDirFieldSync = ({ directories, rootDir, name }) => {
   const binDir = getBinDir(directories, rootDir)
 
   if (binDir === undefined) {
@@ -31,13 +31,12 @@ export const getDirFieldSync = function ({ directories, rootDir, name }) {
   } catch {}
 }
 
-const getBinDir = function (directories, rootDir) {
-  return typeof directories?.bin === 'string'
+const getBinDir = (directories, rootDir) =>
+  typeof directories?.bin === 'string'
     ? resolve(rootDir, directories.bin)
     : undefined
-}
 
-const findDirField = function (paths, binDir, name) {
+const findDirField = (paths, binDir, name) => {
   const dirField = paths.includes(name) ? name : paths[0]
   return dirField === undefined ? undefined : resolve(binDir, dirField)
 }
