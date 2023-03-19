@@ -2,19 +2,16 @@
 
 ## Breaking changes
 
-- When the [`name` option](https://github.com/ehmicky/get-bin-path#optionsname)
-  is used and no binary of that name is found, `undefined` is now returned.
-  Previously, a random binary was sometimes returned.
-- When the `package.json` uses the
-  [`directories.bin` field](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
-  (as opposed to the
-  [`bin` field](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#bin))
-  and the directory contains multiple binaries, one of them must match either
-  the
-  [`package.json` `name`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#name)
-  or the [`name` option](https://github.com/ehmicky/get-bin-path#optionsname),
-  otherwise `undefined` is returned. Previously, a random binary was sometimes
-  returned.
+- `undefined` is now always returned when the binary cannot be found. In
+  particular when:
+  - The [`name` option](https://github.com/ehmicky/get-bin-path#optionsname) is
+    used but no binary of that name is found
+  - The `package.json` uses a
+    [`directories.bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
+    with multiple binaries, but none matches the
+    [`package.json` `name`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#name)
+    or [`name` option](https://github.com/ehmicky/get-bin-path#optionsname)
+- Previously, a random binary was sometimes returned instead.
 
 # 8.0.0
 
