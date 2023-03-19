@@ -122,6 +122,8 @@ Override the current directory, which is used when retrieving the
 
 # See also
 
+- [`bin-path-cli`](https://github.com/tommy-mitchell/bin-path-cli): execute the
+  current package's binary
 - [`execa`](https://github.com/sindresorhus/execa): process execution for humans
 
 # Support
