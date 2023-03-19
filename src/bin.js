@@ -9,13 +9,16 @@ export const getBinField = ({ packageBin, rootDir, name, packageName }) => {
 
 const getRelativeBinField = (packageBin, name, packageName) => {
   if (typeof packageBin === 'string') {
-    return packageBin
+    return getStringBinField(packageBin, name, packageName)
   }
 
   if (typeof packageBin === 'object') {
     return getObjectBinField(packageBin, name, packageName)
   }
 }
+
+const getStringBinField = (packageBin, name, packageName) =>
+  name === undefined || name === packageName ? packageBin : undefined
 
 const getObjectBinField = (packageBin, name, packageName) => {
   if (name !== undefined) {

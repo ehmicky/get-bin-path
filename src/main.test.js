@@ -30,7 +30,7 @@ each(
     // String `bin`
     [undefined, 'string', 'bin/test.js'],
     ['test', 'string', 'bin/test.js'],
-    ['unknown', 'string', 'bin/test.js'],
+    ['unknown', 'string', undefined],
 
     // Object `bin` with single entry
     [undefined, 'simple', 'bin/test.js'],

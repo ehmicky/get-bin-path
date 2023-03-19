@@ -2,8 +2,8 @@
 
 ## Breaking changes
 
-- `undefined` is now always returned when the binary cannot be found. In
-  particular when:
+- `undefined` is now always returned when the binary cannot be found.
+  Previously, a random binary was sometimes returned instead. This happens when:
   - The [`name` option](https://github.com/ehmicky/get-bin-path#optionsname) is
     used but no binary of that name is found.
   - The `package.json` uses a
@@ -11,7 +11,12 @@
     with multiple binaries, but none matches the
     [`package.json` `name`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#name)
     or [`name` option](https://github.com/ehmicky/get-bin-path#optionsname).
-- Previously, a random binary was sometimes returned instead.
+- When the `package.json`
+  [`bin` field](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#bin)
+  is a string, the
+  [`name` option](https://github.com/ehmicky/get-bin-path#optionsname) (when
+  defined) must match the `package.json`
+  [`name` field](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#name).
 
 # 8.0.0
 
