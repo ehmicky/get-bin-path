@@ -35,7 +35,7 @@ each(
     // Object `bin` with single entry
     [undefined, 'simple', 'bin/test.js'],
     ['test', 'simple', 'bin/test.js'],
-    ['unknown', 'simple', 'bin/test.js'],
+    ['unknown', 'simple', undefined],
 
     // Object `bin` with multiple entries
     [undefined, 'multiple', 'bin/test.js'],
@@ -53,19 +53,20 @@ each(
     [undefined, 'dir_missing', undefined],
 
     // `directories.bin` with single entry
-    [undefined, 'dir_simple', 'bin/test.js'],
-    ['test', 'dir_simple', 'bin/test.js'],
-    ['unknown', 'dir_simple', 'bin/test.js'],
+    [undefined, 'dir_simple', 'bin/test'],
+    ['test', 'dir_simple', 'bin/test'],
+    ['unknown', 'dir_simple', undefined],
 
     // `directories.bin` with multiple entries, including one with same name
     [undefined, 'dir_multiple', 'bin/test'],
     ['test', 'dir_multiple', 'bin/test'],
     ['other', 'dir_multiple', 'bin/other'],
-    ['unknown', 'dir_multiple', 'bin/other'],
+    ['unknown', 'dir_multiple', undefined],
 
     // `directories.bin` with multiple entries, but none with same name
-    [undefined, 'dir_different', 'bin/other'],
-    ['unknown', 'dir_multiple', 'bin/other'],
+    [undefined, 'dir_different', undefined],
+    ['test', 'dir_different', 'bin/test'],
+    ['unknown', 'dir_different', undefined],
 
     // Both `bin` and `directories.bin`
     [undefined, 'dir_both', 'bin/other.js'],

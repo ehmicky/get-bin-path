@@ -83,5 +83,5 @@ const parsePackageJson = (packageJsonPath, packageJsonContents, name) => {
     directories,
   } = JSON.parse(packageJsonContents)
   const rootDir = dirname(packageJsonPath)
-  return { packageBin, directories, rootDir, name: name ?? packageName }
+  return { packageBin, directories, rootDir, name, packageName }
 }

@@ -10,7 +10,7 @@
 [![Medium](https://img.shields.io/badge/-Medium-808080.svg?logo=medium&colorA=404040)](https://medium.com/@ehmicky)
 
 Get the current package's binary path (using the `package.json`
-[`bin`](https://docs.npmjs.com/files/package.json#bin) or
+[`bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#bin) or
 [`directories.bin`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#directoriesbin)
 field).
 
