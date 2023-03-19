@@ -4,13 +4,8 @@ import { resolve } from 'node:path'
 
 // Look for `package.json` `directories.bin` field.
 // It points to a directory with binaries.
-export const getDirField = async ({
-  directories,
-  rootDir,
-  name,
-  packageName,
-}) => {
-  const binDir = getBinDir(directories, rootDir)
+export const getDirField = async (packageJsonFields) => {
+  const binDir = getBinDir(packageJsonFields)
 
   if (binDir === undefined) {
     return
@@ -18,18 +13,13 @@ export const getDirField = async ({
 
   try {
     const paths = await readdir(binDir)
-    return findDirField({ paths, binDir, name, packageName })
+    return findDirField(binDir, paths, packageJsonFields)
   } catch {}
 }
 
 // Same but sync.
-export const getDirFieldSync = ({
-  directories,
-  rootDir,
-  name,
-  packageName,
-}) => {
-  const binDir = getBinDir(directories, rootDir)
+export const getDirFieldSync = (packageJsonFields) => {
+  const binDir = getBinDir(packageJsonFields)
 
   if (binDir === undefined) {
     return
@@ -37,16 +27,16 @@ export const getDirFieldSync = ({
 
   try {
     const paths = readdirSync(binDir)
-    return findDirField({ paths, binDir, name, packageName })
+    return findDirField(binDir, paths, packageJsonFields)
   } catch {}
 }
 
-const getBinDir = (directories, rootDir) =>
+const getBinDir = ({ directories, rootDir }) =>
   typeof directories?.bin === 'string'
     ? resolve(rootDir, directories.bin)
     : undefined
 
-const findDirField = ({ paths, binDir, name, packageName }) => {
+const findDirField = (binDir, paths, { name, packageName }) => {
   const dirField = getDirFieldValue(paths, name, packageName)
   return paths.includes(dirField) ? resolve(binDir, dirField) : undefined
 }
