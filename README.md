@@ -81,6 +81,12 @@ _Returns_: `Promise<string | undefined>`
 Returns the current package's binary absolute path. When no `package.json` or
 binary can be found, `undefined` is returned instead.
 
+Finding the binary follows similar rules to the
+[`npx` command](https://docs.npmjs.com/cli/v9/commands/npx?v=true#description).
+If there are multiple exported binaries and the `name` option is not set, one of
+the binaries' names must match the unscoped portion of the package's `name`
+field.
+
 ```js
 import { getBinPath } from 'get-bin-path'
 
@@ -107,10 +113,66 @@ _Type_: `object`
 #### options.name
 
 _Type_: `string`\
-_Default_: `package.json` `name` property
+_Default_: `package.json` `name` field
 
-Name of the binary. Only needs to be specified when the package exports several
-binaries.
+Name of the binary. If set, the following lookup rules are used:
+
+- If the package's `bin` or `directories.bin` field is a `string`, the specified
+  `name` must match the unscoped portion of the `package.json` `name` field.
+  Otherwise, `undefined` is returned.
+
+  <details>
+    <summary>Example</summary>
+
+  ```json
+  {
+    "name": "example",
+    "bin": "path/to/bin.js"
+  }
+  ```
+
+  <!-- eslint-skip -->
+
+  ```js
+  const binPath = await getBinPath({ name: 'example' })
+  //=> 'path/to/bin.js'
+
+  const binPath = await getBinPath({ name: 'other' })
+  //=> undefined
+  ```
+
+  </details>
+
+- If the binary or binaries are exported by name, `undefined` is returned if
+  none match the specified `name`.
+
+  <details>
+    <summary>Example</summary>
+
+  ```json
+  {
+    "name": "foo",
+    "bin": {
+      "foo": "path/to/foo.js",
+      "bar": "path/to/bar.js"
+    }
+  }
+  ```
+
+  <!-- eslint-skip -->
+
+  ```js
+  const binPath = await getBinPath({ name: 'foo' })
+  //=> 'path/to/foo.js'
+
+  const binPath = await getBinPath({ name: 'bar' })
+  //=> 'path/to/bar.js'
+
+  const binPath = await getBinPath({ name: 'baz' })
+  //=> undefined
+  ```
+
+  </details>
 
 #### options.cwd
 
