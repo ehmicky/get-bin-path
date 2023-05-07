@@ -13,7 +13,7 @@ const ROOT_DIR = packageDirectorySync({})
 const FIXTURES_DIR = fileURLToPath(new URL('fixtures', import.meta.url))
 
 const normalizePath = (binPath) =>
-  relative(ROOT_DIR, binPath).replace(/\\/gu, '/')
+  relative(ROOT_DIR, binPath).replaceAll('\\', '/')
 
 each(
   [getBinPath, getBinPathSync],
