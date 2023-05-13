@@ -36,7 +36,6 @@ const binPath = await getBinPath()
 import test from 'ava'
 // Library to execute child processes / commands
 import { execa } from 'execa'
-
 import { getBinPath } from 'get-bin-path'
 
 const binPath = await getBinPath()

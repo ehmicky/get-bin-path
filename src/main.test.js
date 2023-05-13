@@ -4,10 +4,9 @@ import { cwd as getCwd, chdir } from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 import test from 'ava'
+import { getBinPath, getBinPathSync } from 'get-bin-path'
 import { packageDirectorySync } from 'pkg-dir'
 import { each } from 'test-each'
-
-import { getBinPath, getBinPathSync } from 'get-bin-path'
 
 const ROOT_DIR = packageDirectorySync({})
 const FIXTURES_DIR = fileURLToPath(new URL('fixtures', import.meta.url))
