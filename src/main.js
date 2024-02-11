@@ -3,7 +3,6 @@ import { readFile } from 'node:fs/promises'
 import { dirname } from 'node:path'
 
 import escalade from 'escalade'
-// eslint-disable-next-line n/file-extension-in-import
 import escaladeSync from 'escalade/sync'
 
 import { getBinField } from './bin.js'
