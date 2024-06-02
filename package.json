@@ -57,7 +57,7 @@
     "escalade": "^3.1.1"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^2.0.119",
+    "@ehmicky/dev-tasks": "^2.0.120",
     "pkg-dir": "^7.0.0",
     "test-each": "^7.0.0"
   },
