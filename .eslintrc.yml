@@ -1,3 +1,0 @@
-extends: '@ehmicky/eslint-config/.eslintrc.yml'
-rules:
-  n/no-sync: 0
