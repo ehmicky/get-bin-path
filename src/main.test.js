@@ -1,6 +1,6 @@
 import { mkdir } from 'node:fs/promises'
 import { relative } from 'node:path'
-import { cwd as getCwd, chdir } from 'node:process'
+import { chdir, cwd as getCwd } from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 import test from 'ava'
