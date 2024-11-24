@@ -57,7 +57,7 @@
     "escalade": "^3.2.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^3.0.25",
+    "@ehmicky/dev-tasks": "^3.0.26",
     "@ehmicky/eslint-config": "^20.0.18",
     "@ehmicky/prettier-config": "^1.0.4",
     "pkg-dir": "^8.0.0",
