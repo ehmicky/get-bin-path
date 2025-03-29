@@ -1,3 +1,9 @@
+# 11.0.1
+
+## Documentation
+
+- Improve documentation in `README.md`
+
 # 11.0.0
 
 ## Breaking changes
